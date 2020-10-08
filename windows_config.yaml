@@ -7,10 +7,10 @@
 
   - name: Create ansible user
     win_user:
-      name: '{{ ansible_user.username }}'
+      name: "{{ ansible_user['username'] }}"
       fullname: 'Ansible User'
       gourps: administrator
-      password: '{{ ansible_user.password }}'
+      password: "{{ ansible_user['password'] }}"
       password_expired: no
       password_never_expires: yes
       account_disabled: no
