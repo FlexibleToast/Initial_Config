@@ -8,7 +8,7 @@
     win_user:
       name: "{{ ansible.username }}"
       fullname: 'Ansible User'
-      gourps: administrator
+      groups: Administrators
       password: "{{ ansible.password }}"
       password_expired: no
       password_never_expires: yes
