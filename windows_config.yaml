@@ -1,6 +1,7 @@
 ---
 - name: Initial config of Windows machines
   hosts: all
+  include_vars: "vars/ansible_user/vault.yaml"
   tasks:
 
   - name: Create ansible user
