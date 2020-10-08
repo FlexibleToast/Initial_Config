@@ -1,15 +1,15 @@
 ---
 - name: Initial config of Windows machines
   hosts: all
-  vars_files: "vars/ansible_user/vault.yaml"
+  vars_files: "vars/ansible_user.vault.yaml"
   tasks:
 
   - name: Create ansible user
     win_user:
-      name: "{{ ansible_username }}"
+      name: "{{ ansible.username }}"
       fullname: 'Ansible User'
       gourps: administrator
-      password: "{{ ansible_password }}"
+      password: "{{ ansible.password }}"
       password_expired: no
       password_never_expires: yes
       account_disabled: no
