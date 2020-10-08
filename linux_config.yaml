@@ -6,21 +6,21 @@
   
   - name: Create ansible user on Red Hat based host
     user:
-      name: "{{ ansible_user.username }}"
-      password: "{{ ansible_user.password | password_hash('sha512') }}"
+      name: "{{ ansible_username }}"
+      password: "{{ ansible_password | password_hash('sha512') }}"
       group: wheel
       append: yes
     when: ansible_os_family == "RedHat"
 
   - name: Create ansible user on Debian based host
     user:
-      name: "{{ ansible_user.username }}"
-      password: "{{ ansible_user.password | password_hash('sha512') }}"
+      name: "{{ ansible_username }}"
+      password: "{{ ansible_password | password_hash('sha512') }}"
       group: sudo
       append: yes
     when: ansible_os_family == "Debian"
 
   - name: Copy ansible user ssh key
     authorized_key:
-      user: "{{ ansible_user.username }}"
-      key: "{{ ansible_user.authorized_key }}"
+      user: "{{ ansible_username }}"
+      key: "{{ ansible_authorized_key }}"
