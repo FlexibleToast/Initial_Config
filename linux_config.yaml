@@ -4,7 +4,7 @@
   vars_files: "vars/ansible_user.vault.yaml"
   become: yes
   tasks:
-  
+
   - name: Create ansible user on Red Hat based host
     user:
       name: "{{ ansible.username }}"
@@ -25,3 +25,22 @@
     authorized_key:
       user: "{{ ansible.username }}"
       key: "{{ ansible.authorized_key }}"
+
+  - name: Upgrade Red Hat based hosts
+    yum:
+      name: '*'
+      state: latest
+      update_cache: yes
+    when: ansible_os_family == "RedHat" and skip_update is not defined
+
+  - name: Upgrade Debian based hosts
+    apt:
+      force_apt_get: yes
+      name: '*'
+      state: latest
+      update_cache: yes
+      autoremove: yes
+    when: ansible_os_family == "Debian"
+
+  - name: Reboot hosts
+    reboot:
