@@ -1,5 +1,5 @@
 - hosts: all
-  become: yes
+  gather_facts: no
   tasks:
     
   - name: Install package on Red Hat host

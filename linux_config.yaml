@@ -2,7 +2,6 @@
 - name: Initial config a linux machine
   hosts: all
   vars_files: "vars/ansible_user.vault.yaml"
-  become: yes
   tasks:
 
   - name: Create ansible user on Red Hat based host
