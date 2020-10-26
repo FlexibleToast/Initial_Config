@@ -5,5 +5,5 @@
   - name: Control a service
     service:
       name: "{{ service.name }}"
-      state: "{{ service.state | default('started')"
+      state: "{{ service.state | default('started') }}"
       enabled: "{{ service.enabled | default(true) }}"
