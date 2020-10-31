@@ -1,9 +1,0 @@
-- hosts: all
-  gather_facts: no
-  tasks:
-
-  - name: Control a service
-    service:
-      name: "{{ service.name }}"
-      state: "{{ service.state | default('started') }}"
-      enabled: "{{ service.enabled | default(true) }}"
