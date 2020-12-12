@@ -10,6 +10,7 @@
       password: "{{ ansible.password | password_hash('sha512') }}"
       group: wheel
       append: yes
+      shell: /bin/bash
     when: ansible_os_family == "RedHat"
 
   - name: Create ansible user on Debian based host
@@ -18,6 +19,7 @@
       password: "{{ ansible.password | password_hash('sha512') }}"
       group: sudo
       append: yes
+      shell: /bin/bash
     when: ansible_os_family == "Debian"
 
   - name: Copy ansible user ssh key
